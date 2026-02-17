@@ -30,6 +30,24 @@ This project provides a Raspberry Pi HTTP camera server on **port 8080** that mi
   1. `picamera2` (recommended for Arducam/libcamera stack)
   2. OpenCV fallback (`cv2.VideoCapture`)
 
+## One-command install from a GitHub link (creates files/directories automatically)
+
+Yes — this repo includes `install_from_github.sh` so you can install directly from a GitHub URL and have directories/files/service setup done for you.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/<your-user>/<your-repo>/<branch>/install_from_github.sh -o /tmp/install_from_github.sh
+sudo bash /tmp/install_from_github.sh https://github.com/<your-user>/<your-repo>.git
+```
+
+What it does automatically:
+
+- Installs required system packages.
+- Clones (or updates) the repo into `/opt/ip-webcam-pi`.
+- Creates Python virtualenv and installs requirements.
+- Installs and patches the systemd unit for your local path/user.
+- Installs Avahi service for LAN discovery.
+- Enables/starts the camera service.
+
 ## Install
 
 On Raspberry Pi OS:
