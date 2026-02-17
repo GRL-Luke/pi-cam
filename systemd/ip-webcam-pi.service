@@ -1,0 +1,17 @@
+[Unit]
+Description=IP Webcam compatible HTTP server for Raspberry Pi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/opt/ip-webcam-pi
+ExecStart=/usr/bin/python3 /opt/ip-webcam-pi/ip_webcam_server.py --host 0.0.0.0 --port 8080
+Restart=always
+RestartSec=2
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
